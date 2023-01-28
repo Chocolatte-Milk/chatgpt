@@ -56,7 +56,74 @@ class ChatGptState extends State<ChatGpt> {
               child: Container(
                 width: 223,
                 height: 54,
-                color: const Color.fromARGB(255, 62, 63, 75),
+                decoration: const BoxDecoration(
+                  color: Color.fromARGB(255, 62, 63, 75),
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(
+                      14,
+                    ),
+                    bottomRight: Radius.circular(14),
+                    bottomLeft: Radius.circular(14),
+                    topRight: Radius.circular(14),
+                  ),
+                ),
+              ),
+            ),
+            Align(
+              alignment: const Alignment(0, -0.1),
+              child: Container(
+                width: 223,
+                height: 54,
+                decoration: const BoxDecoration(
+                  color: Color.fromARGB(255, 62, 63, 75),
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(
+                      14,
+                    ),
+                    bottomRight: Radius.circular(14),
+                    bottomLeft: Radius.circular(14),
+                    topRight: Radius.circular(14),
+                  ),
+                ),
+              ),
+            ),
+            Align(
+              alignment: const Alignment(0, 0.08),
+              child: Container(
+                width: 223,
+                height: 54,
+                decoration: const BoxDecoration(
+                  color: Color.fromARGB(255, 62, 63, 75),
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(
+                      14,
+                    ),
+                    bottomRight: Radius.circular(14),
+                    bottomLeft: Radius.circular(14),
+                    topRight: Radius.circular(14),
+                  ),
+                ),
+              ),
+            ),
+            Align(
+              alignment: const Alignment(0, 0.8),
+              child: Container(
+                width: 357,
+                height: 47,
+                decoration: const BoxDecoration(
+                  color: Color.fromARGB(255, 64, 65, 79),
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(
+                      14,
+                    ),
+                    bottomRight: Radius.circular(14),
+                    bottomLeft: Radius.circular(14),
+                    topRight: Radius.circular(14),
+                  ),
+                ),
+                child:
+                    TextField(//focusNode: FocusNode.of.(context).requestFocus,
+                        ),
               ),
             ),
           ],
