@@ -35,6 +35,7 @@ class ChatGptState extends State<ChatGpt> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
           elevation: 10.0,
@@ -63,7 +64,7 @@ class ChatGptState extends State<ChatGpt> {
                       color: Color.fromARGB(255, 255, 255, 255),
                       fontSize: 40,
                       fontFamily: 'RobotoSerif',
-                      fontWeight: FontWeight.w500,
+                      fontWeight: FontWeight.w300,
                     ),
                   ),
                 ),
@@ -76,8 +77,8 @@ class ChatGptState extends State<ChatGpt> {
                 style: TextStyle(
                   color: Color.fromARGB(255, 255, 255, 255),
                   fontSize: 20,
-                  fontFamily: 'RobotoSerif',
-                  fontWeight: FontWeight.w500,
+                  fontFamily: 'Roboto',
+                  fontWeight: FontWeight.normal,
                 ),
               ),
             ),
@@ -152,15 +153,14 @@ class ChatGptState extends State<ChatGpt> {
                   ),
                 ),
                 child: TextField(
-                  cursorColor: const Color.fromARGB(255, 186, 186, 186),
-                  style: const TextStyle(
-                    color: Color.fromARGB(255, 200, 200, 200),
-                  ),
                   controller: TextEditingController(),
                   onSubmitted: (value) {
                     sendMessage(value);
                   },
-                  //delete const after realisation of input
+                  cursorColor: const Color.fromARGB(255, 186, 186, 186),
+                  style: const TextStyle(
+                    color: Color.fromARGB(255, 200, 200, 200),
+                  ),
                   decoration: const InputDecoration(
                     border: InputBorder.none,
                     contentPadding: EdgeInsets.all(12),
