@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 void main() {
   runApp(ChatGpt());
@@ -12,7 +14,22 @@ class ChatGpt extends StatefulWidget {
   ChatGptState createState() => ChatGptState();
 }
 
-String logo = 'assets/OpenAI_Logo.svg';
+Future<void> sendMessage(String message) async {
+  final apiUrl =
+      Uri.parse("https://api.openai.com/v1/engines/chat-davinci/messages");
+  var response = await http.post(
+    apiUrl,
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": "Bearer API_KEY"
+    },
+    body: json.encode({"text": message, "model": "text-davinci-002"}),
+  );
+
+  if (response.statusCode != 200) {
+    throw Exception("Failed to send message");
+  }
+}
 
 class ChatGptState extends State<ChatGpt> {
   @override
@@ -45,7 +62,8 @@ class ChatGptState extends State<ChatGpt> {
                     style: TextStyle(
                       color: Color.fromARGB(255, 255, 255, 255),
                       fontSize: 40,
-                      //   fontFamily:
+                      fontFamily: 'RobotoSerif',
+                      fontWeight: FontWeight.w500,
                     ),
                   ),
                 ),
@@ -58,7 +76,8 @@ class ChatGptState extends State<ChatGpt> {
                 style: TextStyle(
                   color: Color.fromARGB(255, 255, 255, 255),
                   fontSize: 20,
-                  //   fontFamily:
+                  fontFamily: 'RobotoSerif',
+                  fontWeight: FontWeight.w500,
                 ),
               ),
             ),
@@ -81,7 +100,7 @@ class ChatGptState extends State<ChatGpt> {
               ),
             ),
             Align(
-              alignment: const Alignment(0, -0.1),
+              alignment: const Alignment(0, -0.08),
               child: Container(
                 width: 223,
                 height: 54,
@@ -99,7 +118,7 @@ class ChatGptState extends State<ChatGpt> {
               ),
             ),
             Align(
-              alignment: const Alignment(0, 0.08),
+              alignment: const Alignment(0, 0.12),
               child: Container(
                 width: 223,
                 height: 54,
@@ -132,13 +151,17 @@ class ChatGptState extends State<ChatGpt> {
                     topRight: Radius.circular(14),
                   ),
                 ),
-                child: const TextField(
-                  cursorColor: Color.fromARGB(255, 186, 186, 186),
-                  style: TextStyle(
+                child: TextField(
+                  cursorColor: const Color.fromARGB(255, 186, 186, 186),
+                  style: const TextStyle(
                     color: Color.fromARGB(255, 200, 200, 200),
                   ),
+                  controller: TextEditingController(),
+                  onSubmitted: (value) {
+                    sendMessage(value);
+                  },
                   //delete const after realisation of input
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     border: InputBorder.none,
                     contentPadding: EdgeInsets.all(12),
                   ),
