@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 void main() {
   runApp(ChatGpt());
@@ -11,14 +12,24 @@ class ChatGpt extends StatefulWidget {
   ChatGptState createState() => ChatGptState();
 }
 
+String logo = 'assets/OpenAI_Logo.svg';
+
 class ChatGptState extends State<ChatGpt> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          elevation: 10,
+          elevation: 10.0,
           backgroundColor: const Color.fromARGB(255, 32, 33, 35),
+          flexibleSpace: SafeArea(
+            child: SvgPicture.asset(
+              'assets/OpenAI_Logo.svg',
+              color: const Color.fromARGB(255, 164, 165, 176),
+              height: 37,
+              width: 148,
+            ),
+          ),
         ),
         body: Stack(
           alignment: AlignmentDirectional.topCenter,
@@ -121,9 +132,17 @@ class ChatGptState extends State<ChatGpt> {
                     topRight: Radius.circular(14),
                   ),
                 ),
-                child:
-                    TextField(//focusNode: FocusNode.of.(context).requestFocus,
-                        ),
+                child: const TextField(
+                  cursorColor: Color.fromARGB(255, 186, 186, 186),
+                  style: TextStyle(
+                    color: Color.fromARGB(255, 200, 200, 200),
+                  ),
+                  //delete const after realisation of input
+                  decoration: InputDecoration(
+                    border: InputBorder.none,
+                    contentPadding: EdgeInsets.all(12),
+                  ),
+                ),
               ),
             ),
           ],
